@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafaella Cintra · LinkedIn Ads</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #F4F0EA;
+      --bg-alt:  #EDEAE4;
+      --white:   #FFFFFF;
+      --dark:    #1A1612;
+      --dark-2:  #2A2420;
+      --accent:  #C8A96E;
+      --accent-lt:#D6BF88;
+      --txt:     #1A1612;
+      --txt-m:   #7B7268;
+      --txt-s:   #A89F97;
+      --li:      #0A66C2;
+      --wapp:    #25D366;
+      --r-s: 10px; --r-m: 18px; --r-l: 28px; --r-xl: 40px; --r-2xl: 52px;
+      --sh-xs: 0 1px 4px rgba(26,22,18,.06);
+      --sh-s:  0 2px 16px rgba(26,22,18,.07);
+      --sh-m:  0 8px 40px rgba(26,22,18,.10);
+      --sh-l:  0 24px 80px rgba(26,22,18,.13);
+      --ease: cubic-bezier(.4,0,.2,1);
+      --t:   .28s cubic-bezier(.4,0,.2,1);
+      --ts:  .6s  cubic-bezier(.4,0,.2,1);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--txt); background: var(--bg); overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+      .reveal { opacity:1!important; transform:none!important; }
+    }
+
+    /* ── Cursor ── */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      .cur-dot  { width:8px; height:8px; background:var(--accent); border-radius:50%; position:fixed; z-index:9999; top:0; left:0; pointer-events:none; transform:translate(-50%,-50%); transition:transform .1s; }
+      .cur-ring { width:34px; height:34px; border:1.5px solid rgba(200,169,110,.45); border-radius:50%; position:fixed; z-index:9998; top:0; left:0; pointer-events:none; transform:translate(-50%,-50%); }
+      .cur-dot.hov  { transform:translate(-50%,-50%) scale(2.5); opacity:.4; }
+      .cur-ring.hov { transform:translate(-50%,-50%) scale(1.5); }
+    }
+
+    /* ── Reveal ── */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity var(--ts), transform var(--ts); }
+    .reveal.in { opacity:1; transform:none; }
+    .d1{transition-delay:.10s} .d2{transition-delay:.20s} .d3{transition-delay:.30s} .d4{transition-delay:.40s}
+
+    /* ── Nav ── */
+    #nav {
+      position:fixed; top:0; left:0; right:0; z-index:900;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:20px 48px; transition:var(--t);
+    }
+    #nav.solid {
+      background:rgba(244,240,234,.82);
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      padding:14px 48px;
+      border-bottom:1px solid rgba(26,22,18,.07);
+      box-shadow:var(--sh-xs);
+    }
+    .nav-logo { font-family:var(--serif); font-size:1.25rem; color:var(--txt); text-decoration:none; letter-spacing:-.01em; }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a { font-size:.83rem; font-weight:500; color:var(--txt-m); text-decoration:none; letter-spacing:.02em; transition:color .18s; }
+    .nav-links a:hover { color:var(--txt); }
+    .nav-cta {
+      background:var(--dark); color:var(--bg);
+      padding:10px 22px; border-radius:100px;
+      font-size:.83rem; font-weight:600; text-decoration:none;
+      transition:var(--t); white-space:nowrap;
+    }
+    .nav-cta:hover { background:var(--dark-2); transform:translateY(-1px); box-shadow:var(--sh-s); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--txt); border-radius:2px; transition:var(--t); }
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+    .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+    .mob-nav { display:none; position:fixed; inset:0; z-index:800; background:var(--bg); flex-direction:column; align-items:center; justify-content:center; gap:32px; }
+    .mob-nav.open { display:flex; }
+    .mob-nav a { font-family:var(--serif); font-size:2rem; color:var(--txt); text-decoration:none; opacity:.7; transition:opacity .2s; }
+    .mob-nav a:hover { opacity:1; }
+    .mob-nav-cta { font-family:var(--sans)!important; background:var(--dark); color:var(--bg); padding:14px 36px; border-radius:100px; font-size:.9rem; font-weight:600; }
+    @media(max-width:860px){
+      #nav{padding:16px 24px} #nav.solid{padding:12px 24px}
+      .nav-links,.nav-cta{display:none} .hamburger{display:flex}
+    }
+
+    /* ── Hero ── */
+    #hero {
+      min-height:100dvh;
+      background:var(--bg);
+      position:relative; overflow:hidden;
+      display:grid; grid-template-columns:1fr 1fr;
+      align-items:center;
+      padding:120px 48px 80px;
+      gap:64px;
+    }
+    #hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 80% 70% at 70% 50%, rgba(200,169,110,.1) 0%, transparent 65%);
+      pointer-events:none;
+    }
+    .hero-left { position:relative; z-index:2; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--white); border:1px solid rgba(26,22,18,.1);
+      color:var(--txt-m); padding:7px 16px; border-radius:100px;
+      font-size:.72rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+      margin-bottom:32px; box-shadow:var(--sh-xs);
+    }
+    .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:blink 2.4s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+    .hero-h1 {
+      font-family:var(--serif);
+      font-size:clamp(2.8rem,5vw,4.8rem);
+      color:var(--txt); line-height:1.04; letter-spacing:-.03em;
+      margin-bottom:28px;
+    }
+    .hero-h1 .line { display:block; overflow:hidden; }
+    .hero-h1 .li { display:block; transform:translateY(105%); animation:lineUp .85s var(--ease) forwards; }
+    .hero-h1 .line:nth-child(1) .li{animation-delay:.2s}
+    .hero-h1 .line:nth-child(2) .li{animation-delay:.36s}
+    .hero-h1 .line:nth-child(3) .li{animation-delay:.52s}
+    @keyframes lineUp { to{transform:translateY(0)} }
+    .hero-h1 em { font-style:italic; color:var(--accent); }
+    .hero-sub {
+      font-size:1.05rem; color:var(--txt-m); line-height:1.75;
+      max-width:480px; margin-bottom:44px; font-weight:300;
+      opacity:0; animation:fadeUp .8s var(--ease) .7s forwards;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; opacity:0; animation:fadeUp .8s var(--ease) .85s forwards; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--dark); color:var(--bg);
+      padding:15px 28px; border-radius:100px;
+      font-size:.9rem; font-weight:600; text-decoration:none; transition:var(--t);
+    }
+    .btn-primary:hover { background:var(--dark-2); transform:translateY(-2px); box-shadow:var(--sh-m); }
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:10px;
+      border:1px solid rgba(26,22,18,.18); color:var(--txt);
+      padding:15px 28px; border-radius:100px;
+      font-size:.9rem; font-weight:500; text-decoration:none; transition:var(--t);
+    }
+    .btn-ghost:hover { border-color:var(--txt); background:rgba(26,22,18,.04); transform:translateY(-2px); }
+
+    /* Hero right — metric card */
+    .hero-right { position:relative; z-index:2; opacity:0; animation:fadeUp .9s var(--ease) .5s forwards; }
+    .hero-card {
+      background:var(--white); border-radius:var(--r-2xl);
+      padding:44px 44px 36px; box-shadow:var(--sh-l);
+      border:1px solid rgba(26,22,18,.06);
+      position:relative; overflow:hidden;
+    }
+    .hero-card::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 90% 60% at 80% 0%, rgba(200,169,110,.08) 0%, transparent 65%);
+    }
+    .hc-label { font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--txt-s); margin-bottom:28px; }
+    .hc-metrics { display:flex; flex-direction:column; gap:24px; }
+    .hc-metric { display:flex; align-items:center; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid rgba(26,22,18,.06); }
+    .hc-metric:last-child { padding-bottom:0; border-bottom:none; }
+    .hc-m-val { font-family:var(--serif); font-size:2.4rem; color:var(--txt); line-height:1; }
+    .hc-m-label { font-size:.78rem; color:var(--txt-m); text-align:right; line-height:1.4; }
+    .hc-chip {
+      display:inline-block; background:rgba(200,169,110,.12);
+      color:var(--accent); font-size:.65rem; font-weight:700;
+      padding:3px 10px; border-radius:100px; letter-spacing:.06em;
+      text-transform:uppercase; margin-top:6px;
+    }
+    .hc-footer { margin-top:28px; padding-top:20px; border-top:1px solid rgba(26,22,18,.06); display:flex; align-items:center; gap:10px; }
+    .hc-logo-dot { width:24px; height:24px; background:var(--li); border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .hc-footer-txt { font-size:.78rem; color:var(--txt-m); line-height:1.4; }
+    .hc-footer-txt strong { color:var(--txt); font-weight:600; }
+
+    @media(max-width:1024px){
+      #hero{grid-template-columns:1fr;padding:120px 24px 72px;gap:48px;min-height:auto}
+      .hero-card{max-width:420px}
+    }
+    @media(max-width:860px){
+      #hero{padding:100px 24px 64px}
+    }
+
+    /* ── Section helpers ── */
+    .s-lbl { font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:block; }
+    .s-h { font-family:var(--serif); font-size:clamp(2rem,4vw,3.2rem); line-height:1.08; letter-spacing:-.025em; color:var(--txt); max-width:700px; }
+    .s-h em { font-style:italic; color:var(--accent); }
+    .s-p { font-size:1rem; color:var(--txt-m); line-height:1.8; max-width:560px; margin-top:16px; font-weight:300; }
+
+    /* ── Pain ── */
+    #pain { padding:120px 48px; background:var(--white); }
+    .pain-intro { margin-bottom:64px; }
+    .pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .pain-card {
+      background:var(--bg); border-radius:var(--r-l); padding:36px 30px;
+      border:1px solid rgba(26,22,18,.06); transition:var(--t);
+    }
+    .pain-card:hover { transform:translateY(-4px); box-shadow:var(--sh-m); border-color:rgba(200,169,110,.22); background:var(--white); }
+    .pain-ic {
+      width:42px; height:42px; border-radius:var(--r-s);
+      background:rgba(200,169,110,.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    }
+    .pain-ic svg { width:19px; height:19px; stroke:var(--accent); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .pain-card h3 { font-size:.98rem; font-weight:700; color:var(--txt); line-height:1.3; margin-bottom:10px; }
+    .pain-card p { font-size:.875rem; color:var(--txt-m); line-height:1.78; }
+    @media(max-width:860px){ #pain{padding:80px 24px} .pain-grid{grid-template-columns:1fr} }
+
+    /* ── Creds strip ── */
+    #creds {
+      background:var(--bg); padding:60px 48px;
+      display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+      border-top:1px solid rgba(26,22,18,.07); border-bottom:1px solid rgba(26,22,18,.07);
+    }
+    .creds-lbl { font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--txt-s); white-space:nowrap; }
+    .creds-items { display:flex; gap:40px; flex-wrap:wrap; flex:1; align-items:center; }
+    .cred-it { display:flex; flex-direction:column; gap:2px; }
+    .cred-v { font-family:var(--serif); font-size:1.8rem; color:var(--txt); line-height:1; }
+    .cred-l { font-size:.7rem; color:var(--txt-m); }
+    .cred-sep { width:1px; height:32px; background:rgba(26,22,18,.1); }
+    @media(max-width:860px){ #creds{padding:40px 24px;gap:20px} .cred-sep{display:none} .creds-items{gap:20px} }
+
+    /* ── Case ── */
+    #case { padding:120px 48px; background:var(--white); }
+    .case-tag {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(10,102,194,.07); border:1px solid rgba(10,102,194,.14);
+      color:var(--li); padding:6px 14px; border-radius:100px;
+      font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:20px;
+    }
+    .case-tag svg { width:12px; height:12px; flex-shrink:0; }
+    .case-head { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; margin-bottom:64px; }
+    .case-story { font-size:.98rem; color:var(--txt-m); line-height:1.9; margin-top:8px; }
+    .case-story p+p { margin-top:14px; }
+    .case-story strong { color:var(--txt); font-weight:600; }
+    .case-nums { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .cn {
+      background:var(--bg); border-radius:var(--r-l); padding:26px 22px;
+      position:relative; overflow:hidden; transition:var(--t);
+      border:1px solid rgba(26,22,18,.06);
+    }
+    .cn:hover { transform:translateY(-3px); box-shadow:var(--sh-s); border-color:rgba(200,169,110,.2); }
+    .cn.hero-cn {
+      grid-column:1/-1; background:var(--dark); padding:38px 44px;
+      display:flex; align-items:center; justify-content:space-between; gap:32px;
+      border-color:transparent;
+    }
+    .cn-chip {
+      position:absolute; top:12px; right:12px;
+      background:rgba(200,169,110,.1); color:var(--accent);
+      font-size:.6rem; font-weight:700; padding:3px 9px; border-radius:100px;
+      letter-spacing:.06em; text-transform:uppercase;
+    }
+    .cn.hero-cn .cn-chip { background:rgba(200,169,110,.12); color:var(--accent-lt); }
+    .cn-v { font-family:var(--serif); font-size:2.2rem; line-height:1; color:var(--txt); margin-bottom:5px; }
+    .cn.hero-cn .cn-v { font-size:3.4rem; color:var(--bg); }
+    .cn-l { font-size:.78rem; color:var(--txt-m); }
+    .cn.hero-cn .cn-l { color:rgba(244,240,234,.6); }
+    .hero-cn-aside { text-align:right; flex-shrink:0; }
+    .aside-v { font-family:var(--serif); font-size:1.85rem; color:var(--accent-lt); line-height:1; margin-bottom:4px; }
+    .aside-l { font-size:.7rem; color:rgba(244,240,234,.5); }
+    .case-insight {
+      margin-top:40px;
+      background:var(--bg); border-radius:var(--r-xl); padding:40px 48px;
+      display:flex; align-items:center; gap:48px;
+      border:1px solid rgba(26,22,18,.07);
+    }
+    .ci-q { font-family:var(--serif); font-size:1.4rem; font-style:italic; color:var(--txt); line-height:1.5; flex:1; }
+    .ci-s { text-align:center; flex-shrink:0; }
+    .ci-sv { font-family:var(--serif); font-size:2.8rem; color:var(--accent); line-height:1; display:block; margin-bottom:5px; }
+    .ci-sl { font-size:.73rem; color:var(--txt-m); }
+    @media(max-width:1024px){ .case-head{grid-template-columns:1fr;gap:40px} }
+    @media(max-width:860px){
+      #case{padding:80px 24px}
+      .case-nums{grid-template-columns:1fr 1fr}
+      .cn.hero-cn{flex-direction:column;align-items:flex-start;padding:28px 24px}
+      .hero-cn-aside{text-align:left}
+      .cn-v{font-size:1.8rem} .cn.hero-cn .cn-v{font-size:2.4rem}
+      .case-insight{flex-direction:column;padding:28px 24px;gap:24px}
+    }
+    @media(max-width:480px){ .case-nums{grid-template-columns:1fr} }
+
+    /* ── Metodologia / Framework ── */
+    #meto { padding:120px 48px; background:var(--bg); }
+    .meto-intro { margin-bottom:56px; }
+
+    .fw-step { border-top:1px solid rgba(26,22,18,.09); }
+    .fw-step:last-child { border-bottom:1px solid rgba(26,22,18,.09); }
+    .fw-step-header {
+      display:flex; align-items:center; gap:24px;
+      padding:28px 0; cursor:pointer; user-select:none;
+    }
+    .fw-step-header:hover .fw-step-title { color:var(--accent); }
+    .fw-step-num { font-family:var(--serif); font-size:.82rem; color:var(--txt-s); letter-spacing:.1em; width:44px; flex-shrink:0; transition:color .2s; }
+    .fw-step.open .fw-step-num { color:var(--accent); }
+    .fw-step-info { flex:1; }
+    .fw-step-title { font-family:var(--serif); font-size:2rem; color:var(--txt); line-height:1.1; transition:color .2s; }
+    .fw-step-tagline { font-size:.73rem; color:var(--txt-s); letter-spacing:.04em; margin-top:4px; }
+    .fw-step.open .fw-step-tagline { color:var(--txt-m); }
+    .fw-arrow {
+      width:36px; height:36px; border:1px solid rgba(26,22,18,.14);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; transition:var(--t);
+    }
+    .fw-arrow svg { width:13px; height:13px; stroke:var(--txt-m); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; transition:var(--t); }
+    .fw-step.open .fw-arrow { background:var(--accent); border-color:var(--accent); }
+    .fw-step.open .fw-arrow svg { stroke:#fff; transform:rotate(45deg); }
+
+    .fw-step-body { display:grid; grid-template-rows:0fr; transition:grid-template-rows .42s var(--ease); }
+    .fw-step.open .fw-step-body { grid-template-rows:1fr; }
+    .fw-step-body-inner { overflow:hidden; }
+    .fw-step-content { padding:0 0 48px 68px; display:grid; grid-template-columns:1.2fr 1fr; gap:48px; }
+
+    .fw-col-label { font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--txt-s); margin-bottom:14px; }
+    .fw-col-label.gold { color:var(--accent); }
+    .fw-comps { display:flex; flex-direction:column; gap:7px; }
+    .fw-comp {
+      display:flex; align-items:flex-start; gap:12px; padding:16px;
+      background:var(--white); border:1px solid rgba(26,22,18,.07);
+      border-radius:var(--r-m); transition:var(--t);
+    }
+    .fw-comp:hover { border-color:rgba(200,169,110,.25); box-shadow:var(--sh-xs); }
+    .fw-comp-ic {
+      width:32px; height:32px; border-radius:8px;
+      background:rgba(200,169,110,.1); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .fw-comp-ic svg { width:15px; height:15px; stroke:var(--accent); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .fw-comp-body strong { display:block; color:var(--txt); font-size:.84rem; font-weight:600; margin-bottom:2px; }
+    .fw-comp-body span { color:var(--txt-m); font-size:.78rem; line-height:1.55; }
+
+    .fw-kpi-items { display:flex; flex-direction:column; gap:10px; }
+    .fw-kpi { display:flex; align-items:flex-start; gap:10px; }
+    .fw-kpi-line { width:1px; height:16px; background:rgba(200,169,110,.35); flex-shrink:0; margin-top:4px; }
+    .fw-kpi span { font-size:.83rem; color:var(--txt-m); line-height:1.55; }
+    .fw-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; padding-top:16px; border-top:1px solid rgba(26,22,18,.07); }
+    .fw-tag {
+      font-size:.7rem; font-weight:600; color:var(--txt-m);
+      background:var(--bg); border:1px solid rgba(26,22,18,.1);
+      padding:4px 11px; border-radius:100px; letter-spacing:.04em;
+    }
+
+    @media(max-width:860px){
+      #meto{padding:80px 24px}
+      .fw-step-title{font-size:1.5rem}
+      .fw-step-content{padding:0 0 36px 0;grid-template-columns:1fr;gap:28px}
+    }
+
+    /* ── Serviços ── */
+    #servicos { padding:120px 48px; background:var(--white); }
+    .svc-intro { max-width:600px; margin-bottom:56px; }
+    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .svc-card {
+      background:var(--bg); border-radius:var(--r-xl); padding:40px 32px;
+      border:1px solid rgba(26,22,18,.06); transition:var(--t); position:relative; overflow:hidden;
+    }
+    .svc-card:hover { background:var(--white); box-shadow:var(--sh-m); transform:translateY(-4px); border-color:rgba(200,169,110,.18); }
+    .svc-card-ic {
+      width:42px; height:42px; background:rgba(200,169,110,.1); border-radius:var(--r-s);
+      display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    }
+    .svc-card-ic svg { width:19px; height:19px; stroke:var(--accent); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .svc-card-num { font-family:var(--serif); font-size:3rem; color:rgba(26,22,18,.06); line-height:1; position:absolute; right:24px; top:24px; }
+    .svc-card h3 { font-size:1.05rem; font-weight:700; color:var(--txt); margin-bottom:10px; }
+    .svc-card-sub { font-size:.875rem; color:var(--txt-m); line-height:1.65; margin-bottom:24px; }
+    .svc-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+    .svc-list li { display:flex; align-items:flex-start; gap:9px; font-size:.82rem; color:var(--txt-m); line-height:1.5; }
+    .svc-list li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--accent); flex-shrink:0; margin-top:7px; }
+    .svc-card.featured { background:var(--dark); border-color:transparent; }
+    .svc-card.featured h3 { color:var(--bg); }
+    .svc-card.featured .svc-card-sub { color:rgba(244,240,234,.55); }
+    .svc-card.featured .svc-list li { color:rgba(244,240,234,.55); }
+    .svc-card.featured .svc-list li::before { background:var(--accent); }
+    .svc-card.featured .svc-card-num { color:rgba(244,240,234,.05); }
+    .svc-card.featured .svc-card-ic { background:rgba(200,169,110,.12); }
+    .svc-card.featured:hover { background:var(--dark-2); }
+    @media(max-width:860px){ #servicos{padding:80px 24px} .svc-grid{grid-template-columns:1fr} }
+
+    /* ── Clients marquee ── */
+    #clients { padding:72px 0; background:var(--bg); overflow:hidden; border-top:1px solid rgba(26,22,18,.07); border-bottom:1px solid rgba(26,22,18,.07); }
+    .clients-lbl { text-align:center; font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--txt-s); margin-bottom:36px; padding:0 48px; }
+    .mq-wrap {
+      display:flex; overflow:hidden;
+      -webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+      mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);
+    }
+    .mq-inner { display:flex; gap:64px; width:max-content; animation:mqScroll 80s linear infinite; align-items:center; padding:0 32px; }
+    @keyframes mqScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .client-nm { font-family:var(--serif); font-size:1.25rem; color:var(--txt-m); opacity:.35; white-space:nowrap; transition:opacity .2s; flex-shrink:0; }
+    .client-nm:hover { opacity:.8; }
+    .client-dot { color:var(--bg-alt); font-size:.7rem; opacity:.5; flex-shrink:0; }
+
+    /* ── About ── */
+    #about { padding:120px 48px; background:var(--white); }
+    .about-grid { display:grid; grid-template-columns:380px 1fr; gap:80px; align-items:start; }
+    .about-photo-rel { position:relative; }
+    .about-photo-box {
+      width:100%; aspect-ratio:3/4; border-radius:var(--r-2xl);
+      overflow:hidden; background:var(--bg);
+      position:sticky; top:120px; box-shadow:var(--sh-l);
+    }
+    .about-photo-box img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+    .about-photo-init {
+      width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+      font-family:var(--serif); font-size:7rem; color:rgba(26,22,18,.08);
+    }
+    .about-badge {
+      position:absolute; right:-20px; bottom:36px;
+      background:var(--white); border-radius:var(--r-l); padding:18px 22px;
+      box-shadow:var(--sh-m); border:1px solid rgba(26,22,18,.06);
+    }
+    .ab-v { font-family:var(--serif); font-size:1.85rem; color:var(--txt); line-height:1; }
+    .ab-l { font-size:.7rem; color:var(--txt-m); }
+    .about-bio { font-size:.98rem; color:var(--txt-m); line-height:1.9; margin-top:22px; }
+    .about-bio p+p { margin-top:16px; }
+    .about-bio strong { color:var(--txt); font-weight:600; }
+    .pillars { display:flex; flex-direction:column; gap:16px; margin-top:36px; }
+    .pillar { display:flex; align-items:flex-start; gap:14px; }
+    .p-ic {
+      width:38px; height:38px; flex-shrink:0; border-radius:var(--r-s);
+      background:rgba(200,169,110,.1); display:flex; align-items:center; justify-content:center;
+    }
+    .p-ic svg { width:17px; height:17px; stroke:var(--accent); stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .p-txt strong { display:block; font-size:.87rem; font-weight:700; color:var(--txt); margin-bottom:3px; }
+    .p-txt span { font-size:.82rem; color:var(--txt-m); line-height:1.58; }
+
+    .plexo-block { margin-top:44px; border-top:1px solid rgba(26,22,18,.07); padding-top:40px; }
+    .plexo-tag {
+      display:inline-flex; align-items:center;
+      background:rgba(200,169,110,.1); border:1px solid rgba(200,169,110,.22);
+      color:var(--accent); padding:5px 13px; border-radius:100px;
+      font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;
+    }
+    .plexo-content h4 { font-family:var(--serif); font-size:1.45rem; color:var(--txt); margin-bottom:9px; }
+    .plexo-content p { font-size:.88rem; color:var(--txt-m); line-height:1.75; max-width:460px; }
+    .plexo-chips { display:flex; gap:7px; flex-wrap:wrap; margin-top:14px; }
+    .plexo-chip {
+      font-size:.7rem; font-weight:600; color:var(--txt-m);
+      background:var(--bg); border:1px solid rgba(26,22,18,.1);
+      padding:4px 11px; border-radius:100px; letter-spacing:.04em;
+    }
+
+    @media(max-width:1100px){ .about-grid{grid-template-columns:1fr;gap:52px} .about-photo-box{position:static;max-width:320px} .about-badge{right:-8px;bottom:20px} }
+    @media(max-width:860px){ #about{padding:80px 24px} }
+
+    /* ── CTA ── */
+    #cta {
+      padding:120px 48px; background:var(--dark); text-align:center;
+      position:relative; overflow:hidden;
+      border-radius:var(--r-2xl); margin:0 24px 24px;
+    }
+    #cta::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse 70% 55% at 50% 55%, rgba(200,169,110,.1) 0%, transparent 70%);
+    }
+    .cta-inner { position:relative; z-index:1; max-width:620px; margin:0 auto; }
+    .cta-lbl { display:block; font-size:.68rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:rgba(200,169,110,.7); margin-bottom:20px; }
+    .cta-h2 { font-family:var(--serif); font-size:clamp(2.2rem,4.5vw,3.6rem); color:var(--bg); line-height:1.08; letter-spacing:-.025em; margin-bottom:18px; }
+    .cta-h2 em { font-style:italic; color:var(--accent-lt); }
+    .cta-p { font-size:1rem; color:rgba(244,240,234,.65); line-height:1.75; margin-bottom:48px; }
+    .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .btn-wapp {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--wapp); color:#fff;
+      padding:17px 32px; border-radius:100px;
+      font-size:.92rem; font-weight:700; text-decoration:none; transition:var(--t);
+    }
+    .btn-wapp:hover { filter:brightness(1.08); transform:translateY(-2px); box-shadow:0 8px 28px rgba(37,211,102,.3); }
+    @media(max-width:860px){ #cta{padding:80px 24px;margin:0 16px 16px;border-radius:var(--r-xl)} }
+
+    /* ── Footer ── */
+    footer {
+      padding:24px 48px; background:var(--dark);
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+      border-top:1px solid rgba(244,240,234,.07);
+    }
+    .f-logo { font-family:var(--serif); font-size:.95rem; color:rgba(244,240,234,.4); }
+    .f-copy { font-size:.72rem; color:rgba(244,240,234,.28); }
+    @media(max-width:860px){ footer{padding:20px 24px;flex-direction:column;align-items:flex-start} }
+  </style>
+</head>
+<body>
+
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<div class="cur-ring" id="curRing" aria-hidden="true"></div>
+
+<!-- Mobile Nav -->
+<div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Menu">
+  <a href="#case"     onclick="closeMob()">Case</a>
+  <a href="#meto"     onclick="closeMob()">Metodologia</a>
+  <a href="#servicos" onclick="closeMob()">Serviços</a>
+  <a href="#about"    onclick="closeMob()">Sobre</a>
+  <a href="https://wa.me/+5511919369890" class="mob-nav-cta" target="_blank" rel="noopener">Falar no WhatsApp</a>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Rafaella Cintra</a>
+  <ul class="nav-links">
+    <li><a href="#case">Case</a></li>
+    <li><a href="#meto">Metodologia</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#about">Sobre</a></li>
+  </ul>
+  <a href="https://wa.me/+5511919369890" class="nav-cta" target="_blank" rel="noopener">Falar agora</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section id="hero" aria-label="Início">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="hero-badge-dot" aria-hidden="true"></div>
+      LinkedIn Ads · 7 anos de experiência
+    </div>
+    <h1 class="hero-h1">
+      <span class="line"><span class="li">seu próximo cliente</span></span>
+      <span class="line"><span class="li">está no LinkedIn.</span></span>
+      <span class="line"><span class="li"><em>vamos chegar até ele.</em></span></span>
+    </h1>
+    <p class="hero-sub">Gestão de LinkedIn Ads para quem vende para empresas. Foco em alcançar a pessoa certa, no cargo certo, na hora certa.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn-primary">
+        Quero começar
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#case" class="btn-ghost">Ver case real</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hc-label">Resultado · Dispositiva · ABR 2025</div>
+      <div class="hc-metrics">
+        <div class="hc-metric">
+          <div class="hc-m-val">114 mil</div>
+          <div class="hc-m-label">
+            profissionais alcançados<br>
+            <span class="hc-chip">Alcance pago</span>
+          </div>
+        </div>
+        <div class="hc-metric">
+          <div class="hc-m-val">R$1,69</div>
+          <div class="hc-m-label">
+            custo por engajamento<br>
+            <span class="hc-chip">B2B qualificado</span>
+          </div>
+        </div>
+        <div class="hc-metric">
+          <div class="hc-m-val">+100M</div>
+          <div class="hc-m-label">
+            impressões combinadas<br>
+            <span class="hc-chip">Pago + Orgânico</span>
+          </div>
+        </div>
+      </div>
+      <div class="hc-footer">
+        <div class="hc-logo-dot">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </div>
+        <div class="hc-footer-txt"><strong>LinkedIn Ads</strong> · campanha real com orçamento controlado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pain -->
+<section id="pain" aria-labelledby="pain-h">
+  <div class="pain-intro">
+    <span class="s-lbl reveal">Por que o LinkedIn?</span>
+    <h2 class="s-h reveal d1" id="pain-h">O público mais qualificado<br>da internet. <em>Usado do jeito certo.</em></h2>
+    <p class="s-p reveal d2">LinkedIn Ads tem o público mais qualificado da internet. Mas sem estratégia, segmentação certa e criativos que fazem sentido pra esse contexto, o dinheiro vai embora.</p>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card reveal d1">
+      <div class="pain-ic">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <h3>Segmentação ultra avançada</h3>
+      <p>Cargo, senioridade, setor, tamanho de empresa. Quando você cruza esses dados do jeito certo, fala só com quem importa.</p>
+    </div>
+    <div class="pain-card reveal d2">
+      <div class="pain-ic">
+        <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <h3>CPM proporcional à alta qualificação</h3>
+      <p>O CPM é mais alto, mas o lead que chega de lá tem uma qualificação que raramente aparece em outras plataformas. A conta considera qualidade, não só volume.</p>
+    </div>
+    <div class="pain-card reveal d3">
+      <div class="pain-ic">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+      </div>
+      <h3>Analytics de ponta a ponta</h3>
+      <p>Dados conectando impressões a negócio real. Um relatório claro que mostra o caminho do clique até o lead muda o jogo completamente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Creds strip -->
+<div id="creds" role="region" aria-label="Credenciais">
+  <span class="creds-lbl">Certificações &amp; trajetória</span>
+  <div class="creds-items">
+    <div class="cred-it reveal"><span class="cred-v">7+</span><span class="cred-l">anos em performance</span></div>
+    <div class="cred-sep" aria-hidden="true"></div>
+    <div class="cred-it reveal d1"><span class="cred-v">Meta</span><span class="cred-l">Marketing Partner</span></div>
+    <div class="cred-sep" aria-hidden="true"></div>
+    <div class="cred-it reveal d2"><span class="cred-v">Google</span><span class="cred-l">Certified Publishing Partner</span></div>
+    <div class="cred-sep" aria-hidden="true"></div>
+    <div class="cred-it reveal d3"><span class="cred-v">LinkedIn</span><span class="cred-l">LinkedIn Partner</span></div>
+    <div class="cred-sep" aria-hidden="true"></div>
+    <div class="cred-it reveal d4"><span class="cred-v">100+</span><span class="cred-l">empresas atendidas</span></div>
+  </div>
+</div>
+
+<!-- Case -->
+<section id="case" aria-labelledby="case-h">
+  <div class="case-tag">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24H22.2c.98 0 1.8-.77 1.8-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+    LinkedIn Ads · Dispositiva · ABR 2025
+  </div>
+  <div class="case-head">
+    <div>
+      <h2 class="s-h reveal" id="case-h" style="max-width:100%">114 mil profissionais. um orçamento restrito. <em>resultado que impressiona pela qualificação.</em></h2>
+    </div>
+    <div class="case-story reveal d1">
+      <p>A <strong>Dispositiva</strong> precisava colocar o <strong>Los Angeles Brazilian Film Festival</strong> no radar dos profissionais certos: decisores e formadores de opinião do setor cultural e empresarial no LinkedIn.</p>
+      <p>O desafio era duplo: gerar presença qualificada e criar engajamento real, com orçamento controlado e público nichado.</p>
+      <p>A estratégia combinou <strong>campanha de conhecimento de marca</strong> pra ampliar o alcance com <strong>campanha de engajamento</strong> pra converter atenção em interação. Alimentado pela produção orgânica, cada real investido rendeu mais.</p>
+      <p>O resultado: <strong>338 mil impressões combinadas</strong>, CPM de R$3,55 abaixo da média da plataforma, e custo por engajamento de <strong>R$1,69</strong>.</p>
+    </div>
+  </div>
+  <div class="case-nums">
+    <div class="cn hero-cn reveal">
+      <div>
+        <div class="cn-chip">Alcance pago</div>
+        <div class="cn-v">114 mil</div>
+        <div class="cn-l">profissionais do LinkedIn alcançados</div>
+      </div>
+      <div class="hero-cn-aside">
+        <div class="aside-v">338k+</div>
+        <div class="aside-l">impressões totais<br>(pago + orgânico)</div>
+      </div>
+    </div>
+    <div class="cn reveal d1"><div class="cn-chip">Eficiência</div><div class="cn-v">R$3,55</div><div class="cn-l">CPM abaixo da média da plataforma</div></div>
+    <div class="cn reveal d2"><div class="cn-chip">Engajamento</div><div class="cn-v">R$1,69</div><div class="cn-l">Custo por engajamento B2B</div></div>
+    <div class="cn reveal d3"><div class="cn-chip">Investimento</div><div class="cn-v">R$3,6k</div><div class="cn-l">Total investido no período</div></div>
+    <div class="cn reveal d1"><div class="cn-chip">Orgânico</div><div class="cn-v">195k</div><div class="cn-l">Impressões orgânicas geradas</div></div>
+    <div class="cn reveal d2"><div class="cn-chip">Festival</div><div class="cn-v">142k</div><div class="cn-l">Impressões na campanha principal</div></div>
+    <div class="cn reveal d3"><div class="cn-chip">Interações</div><div class="cn-v">296</div><div class="cn-l">Engajamentos qualificados</div></div>
+  </div>
+  <div class="case-insight reveal">
+    <div class="ci-q">"Com R$3,6 mil, a Dispositiva foi vista por 114 mil profissionais do LinkedIn, construindo autoridade de marca exatamente onde os decisores estão."</div>
+    <div class="ci-s"><span class="ci-sv">-68,94%</span><span class="ci-sl">Redução no custo<br>por resultado de marca</span></div>
+  </div>
+</section>
+
+<!-- Metodologia -->
+<section id="meto" aria-labelledby="meto-h">
+  <div class="meto-intro">
+    <span class="s-lbl reveal">Como eu trabalho</span>
+    <h2 class="s-h reveal d1" id="meto-h">método validado,<br><em>processos estruturados.</em></h2>
+    <p class="s-p reveal d2">Cada etapa tem entregáveis definidos e uma razão de existir.</p>
+  </div>
+
+  <div class="fw-timeline reveal d3">
+
+    <!-- 01 Imersão -->
+    <div class="fw-step open">
+      <div class="fw-step-header" role="button" tabindex="0" aria-expanded="true">
+        <span class="fw-step-num">01</span>
+        <div class="fw-step-info">
+          <div class="fw-step-title">Imersão</div>
+          <div class="fw-step-tagline">Antes de criar qualquer coisa, entender o que já existe</div>
+        </div>
+        <div class="fw-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </div>
+      <div class="fw-step-body"><div class="fw-step-body-inner"><div class="fw-step-content">
+        <div>
+          <div class="fw-col-label">Componentes</div>
+          <div class="fw-comps">
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="fw-comp-body"><strong>Briefing profundo</strong><span>Mapeamento do negócio, objetivos, ICP e posicionamento atual</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div><div class="fw-comp-body"><strong>Análise de dados históricos</strong><span>Campanhas anteriores, métricas, o que funcionou e o que não funcionou</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="fw-comp-body"><strong>Benchmarking de concorrentes</strong><span>O que o mercado está fazendo no LinkedIn Ads e onde estão os gaps</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="fw-comp-body"><strong>Mapeamento de ICP</strong><span>Cargo, senioridade, setor, tamanho de empresa e perfil comportamental</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="fw-comp-body"><strong>Identificação de ângulos</strong><span>Quais mensagens ressoam com esse público e em que momento da jornada</span></div></div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-col-label gold">Metas &amp; KPIs</div>
+          <div class="fw-kpi-items">
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Documento de briefing aprovado pelo cliente</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>ICP detalhado com 3+ personas definidas</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Relatório de benchmarking com gaps identificados</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Score de maturidade de dados avaliado</span></div>
+          </div>
+          <div class="fw-tags"><span class="fw-tag">Briefing</span><span class="fw-tag">ICP</span><span class="fw-tag">Dados históricos</span><span class="fw-tag">Benchmarking</span></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <!-- 02 Estratégia -->
+    <div class="fw-step">
+      <div class="fw-step-header" role="button" tabindex="0" aria-expanded="false">
+        <span class="fw-step-num">02</span>
+        <div class="fw-step-info">
+          <div class="fw-step-title">Estratégia</div>
+          <div class="fw-step-tagline">Com base real, o caminho fica claro</div>
+        </div>
+        <div class="fw-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </div>
+      <div class="fw-step-body"><div class="fw-step-body-inner"><div class="fw-step-content">
+        <div>
+          <div class="fw-col-label">Componentes</div>
+          <div class="fw-comps">
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="22"/><line x1="2" y1="12" x2="8" y2="12"/><line x1="16" y1="12" x2="22" y2="12"/></svg></div><div class="fw-comp-body"><strong>Definição de KPIs e objetivos</strong><span>O que vamos medir e como o sucesso vai ser avaliado</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></div><div class="fw-comp-body"><strong>Segmentação precisa no LinkedIn</strong><span>Cruzamento de cargo, empresa, setor e comportamento</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="fw-comp-body"><strong>Seleção de formatos e orçamento</strong><span>Qual formato funciona melhor pra cada objetivo</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="fw-comp-body"><strong>Mensagens-chave por audiência</strong><span>O que comunicar pra cada segmento em cada etapa do funil</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div><div class="fw-comp-body"><strong>Plano de testes A/B</strong><span>Quais variáveis testar primeiro e como estruturar os aprendizados</span></div></div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-col-label gold">Metas &amp; KPIs</div>
+          <div class="fw-kpi-items">
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Planejamento de campanha aprovado</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Segmentações validadas e documentadas</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Budget alocado por objetivo e formato</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Calendário de criativos definido</span></div>
+          </div>
+          <div class="fw-tags"><span class="fw-tag">Planejamento</span><span class="fw-tag">Segmentação</span><span class="fw-tag">A/B</span><span class="fw-tag">Funil</span></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <!-- 03 Execução -->
+    <div class="fw-step">
+      <div class="fw-step-header" role="button" tabindex="0" aria-expanded="false">
+        <span class="fw-step-num">03</span>
+        <div class="fw-step-info">
+          <div class="fw-step-title">Execução</div>
+          <div class="fw-step-tagline">Configuração técnica, criativos e rastreamento completo</div>
+        </div>
+        <div class="fw-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </div>
+      <div class="fw-step-body"><div class="fw-step-body-inner"><div class="fw-step-content">
+        <div>
+          <div class="fw-col-label">Componentes</div>
+          <div class="fw-comps">
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 1 21 12a10 10 0 0 1-1.93 5.86M4.93 4.93A10 10 0 0 0 3 12a10 10 0 0 0 1.93 5.86"/></svg></div><div class="fw-comp-body"><strong>Configuração técnica das campanhas</strong><span>Setup completo do LinkedIn Campaign Manager, públicos e objetivos</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85"/></svg></div><div class="fw-comp-body"><strong>Produção de criativos e copys</strong><span>Anúncios pensados pra quem decide, não pra quem navega por lazer</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="fw-comp-body"><strong>Tracking e taggeamento</strong><span>Configuração de eventos, LinkedIn Insight Tag, UTMs e fluxo de dados</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="fw-comp-body"><strong>Revisão e publicação</strong><span>Checklist antes de ativar: tudo revisado, aprovado e rodando certo</span></div></div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-col-label gold">Metas &amp; KPIs</div>
+          <div class="fw-kpi-items">
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Campanha ativa em até 5 dias úteis</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>100% dos eventos rastreados e validados</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Taxa de aprovação de anúncios &gt; 90%</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Fluxo de dados confirmado no dashboard</span></div>
+          </div>
+          <div class="fw-tags"><span class="fw-tag">Campaign Manager</span><span class="fw-tag">Insight Tag</span><span class="fw-tag">UTMs</span><span class="fw-tag">GA4</span></div>
+        </div>
+      </div></div></div>
+    </div>
+
+    <!-- 04 Assessoria -->
+    <div class="fw-step">
+      <div class="fw-step-header" role="button" tabindex="0" aria-expanded="false">
+        <span class="fw-step-num">04</span>
+        <div class="fw-step-info">
+          <div class="fw-step-title">Assessoria</div>
+          <div class="fw-step-tagline">Campanha no ar é começo. Otimização é contínua.</div>
+        </div>
+        <div class="fw-arrow"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      </div>
+      <div class="fw-step-body"><div class="fw-step-body-inner"><div class="fw-step-content">
+        <div>
+          <div class="fw-col-label">Componentes</div>
+          <div class="fw-comps">
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div class="fw-comp-body"><strong>Relatórios semanais com análise real</strong><span>Não só números. Interpretação do que está acontecendo.</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div><div class="fw-comp-body"><strong>Testes A/B contínuos</strong><span>Criativos, copys, segmentações e formatos testados de forma sistemática</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div><div class="fw-comp-body"><strong>Ajustes de bid e segmentação</strong><span>Otimização de lance, frequência e público conforme os dados evoluem</span></div></div>
+            <div class="fw-comp"><div class="fw-comp-ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg></div><div class="fw-comp-body"><strong>Reuniões de alinhamento</strong><span>Visibilidade total sobre o que está rodando e as próximas decisões estratégicas</span></div></div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <div class="fw-col-label gold">Metas &amp; KPIs</div>
+          <div class="fw-kpi-items">
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>CPC decrescente ao longo do mês</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>CTR crescente por criativo</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Custo por lead dentro do benchmark</span></div>
+            <div class="fw-kpi"><div class="fw-kpi-line"></div><span>Relatório semanal entregue na segunda</span></div>
+          </div>
+          <div class="fw-tags"><span class="fw-tag">Otimização</span><span class="fw-tag">Relatórios</span><span class="fw-tag">Bid</span><span class="fw-tag">Performance</span></div>
+        </div>
+      </div></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Serviços -->
+<section id="servicos" aria-labelledby="svc-h">
+  <div class="svc-intro">
+    <span class="s-lbl reveal">O que eu faço</span>
+    <h2 class="s-h reveal d1" id="svc-h">Performance e crescimento<br><em>para além de ads.</em></h2>
+    <p class="s-p reveal d2">Gestão de mídia é uma camada. Resultado de verdade aparece quando os dados, os sistemas e a estratégia conversam entre si.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card featured reveal">
+      <div class="svc-card-num">01</div>
+      <div class="svc-card-ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <h3>LinkedIn Ads</h3>
+      <p class="svc-card-sub">Gestão estratégica de campanhas pra quem precisa chegar em decisores B2B com precisão e custo controlado.</p>
+      <ul class="svc-list">
+        <li>Planejamento e estratégia de campanha</li>
+        <li>Segmentação por cargo, setor e senioridade</li>
+        <li>Criação de anúncios e copys</li>
+        <li>Gestão, otimização e testes A/B</li>
+        <li>Relatórios com análise estratégica</li>
+      </ul>
+    </div>
+    <div class="svc-card reveal d1">
+      <div class="svc-card-num">02</div>
+      <div class="svc-card-ic"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Tracking e Analytics</h3>
+      <p class="svc-card-sub">Dados que realmente chegam certos. Rastreamento, dashboards e visibilidade sobre o que está funcionando.</p>
+      <ul class="svc-list">
+        <li>Configuração de GA4 e GTM</li>
+        <li>Taggeamento de eventos e conversões</li>
+        <li>Estratégia de UTMs e atribuição</li>
+        <li>Dashboards personalizados</li>
+        <li>Análise de funil e relatórios de performance</li>
+      </ul>
+    </div>
+    <div class="svc-card reveal d2">
+      <div class="svc-card-num">03</div>
+      <div class="svc-card-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <h3>Sistemas no Notion</h3>
+      <p class="svc-card-sub">Operação organizada e visível. Estruturação de processos, CRMs e bases de conhecimento no Notion.</p>
+      <ul class="svc-list">
+        <li>CRM e pipeline de vendas</li>
+        <li>Documentação de processos e playbooks</li>
+        <li>Dashboards operacionais</li>
+        <li>Bases de dados personalizadas</li>
+        <li>Fluxos e automações com Notion</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Clients marquee -->
+<section id="clients" aria-label="Clientes">
+  <p class="clients-lbl reveal">Empresas que confiaram no trabalho</p>
+  <div class="mq-wrap" aria-hidden="true">
+    <div class="mq-inner">
+      <span class="client-nm">Dispositiva</span><span class="client-dot">·</span>
+      <span class="client-nm">Behave</span><span class="client-dot">·</span>
+      <span class="client-nm">Argo Invest</span><span class="client-dot">·</span>
+      <span class="client-nm">Bonibimi</span><span class="client-dot">·</span>
+      <span class="client-nm">Datalyt</span><span class="client-dot">·</span>
+      <span class="client-nm">ff.connection</span><span class="client-dot">·</span>
+      <span class="client-nm">Beer Markt Club</span><span class="client-dot">·</span>
+      <span class="client-nm">Argile-se</span><span class="client-dot">·</span>
+      <span class="client-nm">Braca</span><span class="client-dot">·</span>
+      <span class="client-nm">Dairy Innovation</span><span class="client-dot">·</span>
+      <span class="client-nm">Dispositiva</span><span class="client-dot">·</span>
+      <span class="client-nm">Behave</span><span class="client-dot">·</span>
+      <span class="client-nm">Argo Invest</span><span class="client-dot">·</span>
+      <span class="client-nm">Bonibimi</span><span class="client-dot">·</span>
+      <span class="client-nm">Datalyt</span><span class="client-dot">·</span>
+      <span class="client-nm">ff.connection</span><span class="client-dot">·</span>
+      <span class="client-nm">Beer Markt Club</span><span class="client-dot">·</span>
+      <span class="client-nm">Argile-se</span><span class="client-dot">·</span>
+      <span class="client-nm">Braca</span><span class="client-dot">·</span>
+      <span class="client-nm">Dairy Innovation</span><span class="client-dot">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" aria-labelledby="about-h">
+  <div class="about-grid">
+    <div class="about-photo-rel reveal">
+      <div class="about-photo-box" role="img" aria-label="Foto de Rafaella Cintra">
+        <img src="./IMG_20260204_113010.jpg" alt="Rafaella Cintra" onerror="this.style.display='none'" />
+        <div class="about-photo-init" aria-hidden="true">RC</div>
+      </div>
+      <div class="about-badge">
+        <div class="ab-v">7+</div>
+        <div class="ab-l">anos em mídia paga</div>
+      </div>
+    </div>
+    <div>
+      <span class="s-lbl reveal">Quem é a Rafa</span>
+      <h2 class="s-h reveal d1" id="about-h">Estrategista que une<br>dados, IA e <em>resultado.</em></h2>
+      <div class="about-bio reveal d2">
+        <p>Sou Rafaella Cintra, estrategista de performance com perfil nexialista. Tenho múltiplos interesses que alimentam o trabalho: cada área nova que exploro entra como camada de análise no que entrego.</p>
+        <p>Com <strong>7 anos em mídia paga</strong>, passei por branding, growth e performance em empresas de diferentes segmentos. Hoje, foco em <strong>estratégias de aquisição, retenção e expansão, unindo ads + dados + IA</strong>: conectando sua empresa com os decisores que realmente importam.</p>
+      </div>
+      <div class="pillars reveal d3">
+        <div class="pillar">
+          <div class="p-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div class="p-txt"><strong>Metodologia</strong><span>Mergulho no universo do cliente antes de criar qualquer anúncio. Dados históricos, concorrência, comportamento do público.</span></div>
+        </div>
+        <div class="pillar">
+          <div class="p-ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="p-txt"><strong>Inteligência</strong><span>Uso ferramentas de IA pra escrita, imagem e análise. Construo workflows que aceleram processos sem perder qualidade no resultado.</span></div>
+        </div>
+        <div class="pillar">
+          <div class="p-ic"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+          <div class="p-txt"><strong>Integração</strong><span>Experiência em performance, branding e growth me permite refinar messaging, montar testes A/B e validar ICPs com mais profundidade.</span></div>
+        </div>
+      </div>
+      <div class="plexo-block reveal d4">
+        <div class="plexo-tag">Co-fundadora</div>
+        <div class="plexo-content">
+          <h4>Plexo Global</h4>
+          <p>Fora da gestão de ads, sou co-fundadora da Plexo, onde a gente constrói e opera a infraestrutura de receita de negócios que já validaram o modelo. IA, automação e dados conectados numa operação que escala.</p>
+          <div class="plexo-chips">
+            <span class="plexo-chip">IA</span>
+            <span class="plexo-chip">Automação</span>
+            <span class="plexo-chip">Revenue Ops</span>
+            <span class="plexo-chip">Dados integrados</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" aria-labelledby="cta-h">
+  <div class="cta-inner">
+    <span class="cta-lbl reveal">Vamos trabalhar juntos</span>
+    <h2 class="cta-h2 reveal d1" id="cta-h">Pronto pra alcançar<br>quem <em>realmente decide?</em></h2>
+    <p class="cta-p reveal d2">Vamos conversar sobre o seu negócio e montar uma estratégia de LinkedIn Ads que conecta sua empresa com os decisores certos.</p>
+    <div class="cta-btns reveal d3">
+      <a href="https://wa.me/+5511919369890" class="btn-wapp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp com Rafaella Cintra">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17 0-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Zm-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37A9.86 9.86 0 0 1 2.16 11.9C2.16 6.44 6.6 2 12.05 2c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.89-9.88 9.89Zm8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.94L.06 24l6.31-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9A11.82 11.82 0 0 0 20.46 3.48Z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <span class="f-logo">Rafaella Cintra</span>
+  <span class="f-copy">2026 · marketing b2b · (11) 919369890 · rafaella@plexoglobal.com</span>
+</footer>
+
+<script>
+/* ── Cursor ── */
+(function(){
+  const dot=document.getElementById('curDot'), ring=document.getElementById('curRing');
+  if(!dot||!ring||!window.matchMedia('(pointer: fine)').matches) return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  dot.style.display='block'; ring.style.display='block';
+  (function tick(){
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a,button,.pain-card,.cn,.svc-card,.fw-comp,.fw-step-header').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.classList.add('hov');ring.classList.add('hov');});
+    el.addEventListener('mouseleave',()=>{dot.classList.remove('hov');ring.classList.remove('hov');});
+  });
+})();
+
+/* ── Nav scroll ── */
+(function(){
+  const nav=document.getElementById('nav');
+  const fn=()=>nav.classList.toggle('solid',window.scrollY>60);
+  window.addEventListener('scroll',fn,{passive:true}); fn();
+})();
+
+/* ── Mobile nav ── */
+(function(){
+  const btn=document.getElementById('hamburger'), mob=document.getElementById('mobNav');
+  let open=false;
+  function toggle(){
+    open=!open;
+    btn.classList.toggle('open',open);
+    mob.classList.toggle('open',open);
+    btn.setAttribute('aria-expanded',open);
+    document.body.style.overflow=open?'hidden':'';
+  }
+  btn.addEventListener('click',toggle);
+  window.closeMob=function(){if(open)toggle();};
+})();
+
+/* ── Scroll reveal ── */
+(function(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.08,rootMargin:'0px 0px -28px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ── Framework accordion ── */
+(function(){
+  document.querySelectorAll('.fw-step-header').forEach(header=>{
+    header.addEventListener('click',()=>{
+      const step=header.closest('.fw-step');
+      const isOpen=step.classList.contains('open');
+      document.querySelectorAll('.fw-step').forEach(s=>{
+        s.classList.remove('open');
+        s.querySelector('.fw-step-header').setAttribute('aria-expanded','false');
+      });
+      if(!isOpen){
+        step.classList.add('open');
+        header.setAttribute('aria-expanded','true');
+      }
+    });
+    header.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();header.click();}
+    });
+  });
+})();
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
